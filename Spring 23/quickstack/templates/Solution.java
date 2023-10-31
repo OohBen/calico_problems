@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.HashMap;
 
 class Solution {
     /**
@@ -11,7 +12,20 @@ class Solution {
      */
     static void solve(int N, int M, char[] P, char[] C) {
         // YOUR CODE HERE
-        return;
+        HashMap<Character, Integer> map = new HashMap<>();
+        for(char p : P){
+            map.put(p, map.getOrDefault(p, 0)+1);
+        }
+        for(char p : C){
+            map.put(p, map.getOrDefault(p, 0)+1);
+        }
+        StringBuilder builder = new StringBuilder();
+        
+        for(char c : C){
+            String tmp =  c+"";
+            builder.append(tmp.repeat(map.getOrDefault(c, 1)));
+        }
+        System.out.println(builder);
     }
     
     static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
